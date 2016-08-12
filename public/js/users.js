@@ -1,7 +1,8 @@
-	var angularModule = angular.module('MyApp', []);
+var angularModule = angular.module('MyApp', []);
 
-	angularModule.controller('MainController', function($scope, $http, $timeout) {
-			
+angularModule.controller('MainController', function($scope, $http, $timeout) {
+		
+		//Get users
 		$http.get("http://localhost:3000/usr/").then(function(response) {
 			
 
@@ -11,22 +12,26 @@
 			}
 
 		});
+
+
+		//Create User
+		$scope.createUser = function() {
 		
-
-
-	$scope.createUser = function() {
+			var user = {
+					name : $scope.name,
+					email: $scope.email,
+					password: $scope.password,
+				};
+		console.log(" DATA : ", user);
+		$http.post('http://localhost:3000/usr/', user).success(
+				function(data) {
+				
+					//$scope.users.push(data.data.createdRecord);
+					console.log("user created ", data);
+				}).error(function (error){
+					console.log("error creating user ", error);
+				});
+	}
 	
-	console.log(" DATA : ", palette);
-	$http.post('/usr/', JSON.stringify(palette)).success(
-			function(data) {
-				
-				$scope.palettes.push(data);
-				
-			}).error(function (error){
-				
-				$scope.palettes.push(data);
-			});
-}
 
-
-	});
+});

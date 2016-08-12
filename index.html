@@ -59,7 +59,7 @@
 	    </div>
 	    <div class="form-group">
 	      <div class="col-sm-offset-2 col-sm-5">
-	        <button type="submit" class="btn btn-primary">Submit</button>
+	        <button type="submit" class="btn btn-primary" ng-click="createUser()">Submit</button>
 	      </div>
 	    </div>
 	  </form>
@@ -67,10 +67,10 @@
 
 <br>
 		<table style="border:1px">
-				  <tr ng-repeat="user in users">
-					<td>{{user.name}}</td>
-				  </tr>
-				</table>
+			  <tr ng-repeat="user in users">
+				<td>{{user.name}}</td>
+			  </tr>
+		</table>
 
 				</div>
 				</div>
